@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test for Object Oriented Canvas (OOC)</title>
+    
+    <style>
+      body {
+        background-color: #c0c0c0;
+      }
+      h1 {
+        text-align: center;
+      }
+      
+      td {
+        vertical-align: top;
+      }
+    </style>
+    
+    <script type="text/javascript" src="js/jquery-1.9.0-dev.js"></script>
+    <script type="text/javascript" src="js/ooc.js"></script>
+    
+    <script type="text/javascript">
+    <!--
+    /*var xml = $.parseXML('<canvas container=""><group><line id="line1" from="x1 y1" to="x2 y2" /></group></canvas>');
+    var $xml = $(xml);
+    $xml.find("group").append($("<ellipse/>"));
+    alert ($("#line1", $xml).data("test", "data stocké").attr("from"));
+    
+    $("group *",$xml).each(function() {
+      alert ("each: " + this.tagName + "\n\nTest: " + $(this).data("test"));
+    });*/
+
+    $().ready(function() {
+
+      $("#canv1").ooc("load");
+
+      $("#canv2").ooc(function () {
+        this._ctx.fillStyle = "#000";
+        this._ctx.fillText("Width:" + this.width(),10,50);
+      });
+      $("#canv2").ooc("exec", function () {
+        this._ctx.fillText("Height:" + this.height(),10,100);
+      });
+    
+    });
+    
+    /*Object.prototype.test = function() {return "abc";};
+    
+    var a = {};
+    a[" other"] = function() {return "xyz";};
+    
+    for (var prop in a) {
+      if (a.hasOwnProperty(prop)) {
+        alert ("Prop: '" + prop +"'");
+      }
+    }*/
+    
+    // -->
+    </script>
+  </head>
+
+  <body>
+    <h1>Test for jQuanvas</h1>
+    <br/>
+    <table>
+      <tbody>
+        <tr>
+          <td>Canvas #1</td>
+          <td>
+            <canvas id="canv1" width="500" height="300" style="border: 1px solid;">
+              <nocanvas>
+                <div with="500" height="300" style="border: 1px solid;">
+                  Canvas are nor supported by this browser.
+                </div>
+              </novancas>
+              <group class="grp1">
+                <line from="0 0" to="100% 100%" />
+                <poly from="50% 50%" autoclose="1">
+                  <line to="50% 0" />
+                  <move by="100 0" />
+                  <line by="-50px 50px" />
+                  <softjoint by="0 20px" />
+                  <line by="50px 50px" />
+                  <line to="25% 250px" />
+                  <move to="0 50%" />
+                </poly>
+              </group>
+            </canvas>
+          </td>
+          <td>Canvas #2</td>
+          <td>
+            <canvas id="canv2" width="500" height="300" style="border: 1px solid;">
+            </canvas>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
